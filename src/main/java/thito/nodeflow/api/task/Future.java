@@ -19,5 +19,9 @@ public interface Future {
         return createFuture(NodeFlow.getApplication().getTaskManager().getForegroundThread(), runnable);
     }
 
+    default void executeNow() {
+        throw new UnsupportedOperationException();
+    }
+
     void andThen(Runnable after);
 }

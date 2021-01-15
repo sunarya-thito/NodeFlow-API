@@ -25,5 +25,9 @@ public interface FutureSupplier<T> {
         return NodeFlow.getApplication().getTaskManager().createCompletableFutureSupplier();
     }
 
+    default T getNow() {
+        throw new UnsupportedOperationException();
+    }
+
     void andThen(Consumer<T> consumer);
 }

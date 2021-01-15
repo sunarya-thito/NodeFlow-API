@@ -11,6 +11,7 @@ import java.util.Set;
 public interface Dialog {
 
     int OVERLAY_CLOSE = 0b1;
+    @Deprecated
     int SHOW_CLOSE_BUTTON = 0b01;
 
     static Dialog createDialog(DialogContent content, int options, DialogButton... buttons) {
@@ -30,7 +31,7 @@ public interface Dialog {
     Set<OpenedDialog> getOpenedDialogs();
 
     enum Level {
-        SAFE, WARNING, DANGER
+        SAFE, WARN, DANGER
     }
 
     enum Type {

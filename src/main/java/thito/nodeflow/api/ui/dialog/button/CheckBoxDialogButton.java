@@ -1,5 +1,6 @@
 package thito.nodeflow.api.ui.dialog.button;
 
+import javafx.beans.property.BooleanProperty;
 import thito.nodeflow.api.locale.I18nItem;
 
 public interface CheckBoxDialogButton extends DialogButton {
@@ -9,4 +10,6 @@ public interface CheckBoxDialogButton extends DialogButton {
 
     @Override
     CheckBoxButtonPeer createPeer();
+
+    BooleanProperty impl_checkedProperty();
 }
