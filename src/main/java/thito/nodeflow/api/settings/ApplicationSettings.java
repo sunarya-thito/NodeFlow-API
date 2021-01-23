@@ -7,7 +7,8 @@ public interface ApplicationSettings {
     ASK_BEFORE_EXIT = "ask-before-exit",
     AUTOSAVE_INTERVAL = "autosave-interval",
     WORKSPACE_DIRECTORY = "workspace-directory",
-    BUNDLES_DIRECTORY = "bundles-directory"
+    BUNDLES_DIRECTORY = "bundles-directory",
+    LANGUAGE = "language"
     ;
     List<SettingsItem<?>> getSettingsItems();
     default <T> SettingsItem<T> get(String name) {

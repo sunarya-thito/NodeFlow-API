@@ -1,10 +1,17 @@
 package thito.nodeflow.api;
 
+import thito.nodeflow.api.action.Action;
 import thito.nodeflow.api.config.ListSection;
 import thito.nodeflow.api.config.MapEditor;
 import thito.nodeflow.api.config.MapSection;
 import thito.nodeflow.api.config.Section;
 import thito.nodeflow.api.java.JavaType;
+import thito.nodeflow.api.ui.RadioButtonGroup;
+import thito.nodeflow.api.ui.menu.MenuItem;
+import thito.nodeflow.api.ui.menu.MenuItemType;
+import thito.nodeflow.api.ui.menu.type.ButtonMenuItemType;
+import thito.nodeflow.api.ui.menu.type.CheckBoxMenuItemType;
+import thito.nodeflow.api.ui.menu.type.RadioButtonMenuItemType;
 
 import java.io.Reader;
 import java.io.Writer;
@@ -33,4 +40,16 @@ public interface Toolkit {
     ListSection newListSection();
 
     <M extends Map<K, V>, K, V> MapEditor<M, K, V> newMapEditor(M map);
+
+    MenuItem createItem(Action action, MenuItemType type);
+
+    ButtonMenuItemType menuButtonType();
+
+    CheckBoxMenuItemType menuCheckBoxType();
+
+    RadioButtonMenuItemType menuRadioButtonType();
+
+    MenuItem createSeparatorItem();
+
+    RadioButtonGroup createGroup(String name, int maxAmount);
 }

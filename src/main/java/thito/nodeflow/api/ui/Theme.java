@@ -5,5 +5,5 @@ public interface Theme {
 
     String getIconDirectoryPath();
 
-    String[] getCSSPaths();
+    String[] getCSSPaths(Window window);
 }

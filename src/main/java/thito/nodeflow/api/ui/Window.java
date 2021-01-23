@@ -1,8 +1,12 @@
 package thito.nodeflow.api.ui;
 
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import thito.nodeflow.api.ui.menu.Menu;
 
 public interface Window {
+    Menu getMenu();
+
     void show();
 
     void hide();
@@ -25,9 +29,11 @@ public interface Window {
 
     void setMinimized(boolean minimized);
 
-    javafx.stage.Window impl_getPeer();
+    Stage impl_getPeer();
 
     Pane impl_getDialogLayer();
 
     Pane impl_getViewportLayer();
+
+    String getName();
 }
