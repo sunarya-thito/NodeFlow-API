@@ -19,6 +19,14 @@ public interface MenuItem {
         return item;
     }
 
+    static MenuItem create(I18nItem label) {
+        return create(label, MenuItemType.BUTTON_TYPE);
+    }
+
+    static MenuItem create(String label) {
+        return create(label, MenuItemType.BUTTON_TYPE);
+    }
+
     static MenuItem create(I18nItem label, MenuItemType type, MenuItem... child) {
         MenuItem item = create(null, type);
         item.getChildren().addAll(Arrays.asList(child));

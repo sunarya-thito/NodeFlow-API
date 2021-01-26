@@ -10,6 +10,7 @@ import java.util.Set;
 
 public interface Dialog {
 
+    @Deprecated
     int OVERLAY_CLOSE = 0b1;
     @Deprecated
     int SHOW_CLOSE_BUTTON = 0b01;
