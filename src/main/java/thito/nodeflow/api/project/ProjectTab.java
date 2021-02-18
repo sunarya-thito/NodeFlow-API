@@ -2,9 +2,10 @@ package thito.nodeflow.api.project;
 
 import javafx.scene.Node;
 import thito.nodeflow.api.editor.FileEditorSession;
+import thito.nodeflow.api.resource.*;
 
 public interface ProjectTab {
-    ProjectFile getFile();
+    ResourceFile getFile();
 
     FileEditorSession getSession();
 

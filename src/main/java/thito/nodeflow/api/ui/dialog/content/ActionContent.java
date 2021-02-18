@@ -3,8 +3,7 @@ package thito.nodeflow.api.ui.dialog.content;
 import thito.nodeflow.api.NodeFlow;
 import thito.nodeflow.api.locale.I18nItem;
 import thito.nodeflow.api.task.Task;
-import thito.nodeflow.api.ui.Icon;
-import thito.nodeflow.api.ui.Pos;
+import thito.nodeflow.api.ui.*;
 
 public interface ActionContent extends DialogContent {
 
@@ -19,7 +18,7 @@ public interface ActionContent extends DialogContent {
     void setHeaderAlignment(Pos pos);
 
     interface Action {
-        static ActionContent.Action createAction(I18nItem label, Icon icon, Task task, boolean closeOnAction) {
+        static ActionContent.Action createAction(I18nItem label, Image icon, Task task, boolean closeOnAction) {
             return NodeFlow.getApplication().getUIManager().getDialogManager().createAction(label, icon, task, closeOnAction);
         }
 
@@ -29,6 +28,6 @@ public interface ActionContent extends DialogContent {
 
         boolean isCloseOnAction();
 
-        Icon getIcon();
+        Image getIcon();
     }
 }

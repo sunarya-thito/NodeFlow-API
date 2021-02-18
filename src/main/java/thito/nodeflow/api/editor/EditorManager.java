@@ -1,15 +1,15 @@
 package thito.nodeflow.api.editor;
 
-import java.util.Set;
+import java.util.*;
 
 public interface EditorManager {
     FileEditor getRegisteredHandler(String fileExtension);
 
-    Set<String> getHandledExtensions();
+    Collection<FileEditor> getEditors();
 
-    void registerHandler(String fileExtension, FileEditor editor);
+    void registerHandler(FileEditor editor);
 
-    void unregisterHandler(String fileExtension, FileEditor editor);
+    void unregisterHandler(FileEditor editor);
 
     boolean canHandle(String fileExtension);
 

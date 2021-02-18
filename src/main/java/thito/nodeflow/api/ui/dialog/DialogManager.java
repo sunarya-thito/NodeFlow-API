@@ -2,16 +2,14 @@ package thito.nodeflow.api.ui.dialog;
 
 import thito.nodeflow.api.locale.I18nItem;
 import thito.nodeflow.api.task.Task;
-import thito.nodeflow.api.ui.Icon;
-import thito.nodeflow.api.ui.Pos;
+import thito.nodeflow.api.ui.*;
 import thito.nodeflow.api.ui.action.ClickAction;
 import thito.nodeflow.api.ui.dialog.button.CheckBoxDialogButton;
 import thito.nodeflow.api.ui.dialog.button.DialogButton;
 import thito.nodeflow.api.ui.dialog.button.TextDialogButton;
-import thito.nodeflow.api.ui.dialog.content.ActionContent;
-import thito.nodeflow.api.ui.dialog.content.DialogContent;
-import thito.nodeflow.api.ui.dialog.content.MessageContent;
+import thito.nodeflow.api.ui.dialog.content.*;
 
+import java.util.*;
 import java.util.function.Consumer;
 
 public interface DialogManager {
@@ -25,5 +23,23 @@ public interface DialogManager {
 
     ActionContent createActionContent(I18nItem header, Pos headerAlignment, ActionContent.Action... actions);
 
-    ActionContent.Action createAction(I18nItem label, Icon icon, Task task, boolean closeOnAction);
+    ActionContent.Action createAction(I18nItem label, Image icon, Task task, boolean closeOnAction);
+
+    FormContent createFormContent(I18nItem header, Pos headerAlignment, FormContent.Form<?>... forms);
+
+    FormContent.StringForm createStringForm(I18nItem question, String initialValue, String validator, boolean optional);
+
+    FormContent.NumberForm createNumberForm(I18nItem question, Number initialValue, boolean decimals, boolean optional);
+
+    FormContent.BooleanForm createBooleanForm(I18nItem question, Boolean initialValue, boolean optional);
+
+    <T> FormContent.ChoiceForm<T> createChoiceForm(I18nItem question, T initialValue, List<T> choices, boolean optional);
+
+    <T> FormContent.ChoiceForm<T> createChoiceForm(I18nItem question, List<T> choices, boolean optional);
+
+    FormContent.StringListForm createStringListForm(I18nItem question, List<String> initialValues, boolean optional);
+
+    default FormContent.StringForm createStringForm(I18nItem question, String initialValue, boolean optional) {
+        return createStringForm(question, initialValue, null, optional);
+    }
 }

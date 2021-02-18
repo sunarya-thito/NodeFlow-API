@@ -1,8 +1,15 @@
 package thito.nodeflow.api.task;
 
 import thito.nodeflow.api.NodeFlow;
+import thito.nodeflow.api.ui.*;
 
 public interface Task {
+    static Task createTask(String name, Runnable runnable, TaskThread thread) {
+        TaskManager manager = NodeFlow.getApplication().getTaskManager();
+        Task task = manager.createTask(name, runnable);
+        task.setupThread(thread);
+        return task;
+    }
     static Task runOnBackground(String name, Runnable runnable) {
         TaskManager manager = NodeFlow.getApplication().getTaskManager();
         Task task = manager.createTask(name, runnable);
@@ -44,6 +51,8 @@ public interface Task {
         manager.getForegroundThread().runTaskRepeatedly(task, delay, period);
         return task;
     }
+
+    void setupThread(TaskThread thread);
 
     TaskThread getThread();
 

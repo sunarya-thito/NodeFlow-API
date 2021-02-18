@@ -24,6 +24,8 @@ public interface ResourceManager {
 
     Resource getResource(String name);
 
+    ResourceFile getExternalResource(String name);
+
     ResourceDirectory getBaseDirectory();
 
     ResourceWatcherService getWatcherService();

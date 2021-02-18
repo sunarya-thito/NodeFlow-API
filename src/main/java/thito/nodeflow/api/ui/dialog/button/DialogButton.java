@@ -1,5 +1,6 @@
 package thito.nodeflow.api.ui.dialog.button;
 
+import javafx.beans.property.BooleanProperty;
 import thito.nodeflow.api.NodeFlow;
 import thito.nodeflow.api.locale.I18nItem;
 import thito.nodeflow.api.ui.Icon;
@@ -27,4 +28,10 @@ public interface DialogButton {
     void dispatchClick(ClickAction action);
 
     ButtonPeer createPeer();
+
+    void setDisable(boolean disable);
+
+    boolean isDisable();
+
+    BooleanProperty impl_disableProperty();
 }

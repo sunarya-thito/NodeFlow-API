@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface NodeEditorSession extends FileEditorSession {
     @Override
-    NodeViewport getViewport();
+    NodeViewport requestViewport();
 
     NodeModule getModule();
 

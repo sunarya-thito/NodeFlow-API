@@ -15,4 +15,6 @@ public interface TaskThread {
     Task runTaskRepeatedly(Task task, Duration delay, Duration period);
 
     Task runTaskLater(Task task, Duration delay);
+
+    String getName();
 }

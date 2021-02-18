@@ -1,5 +1,6 @@
 package thito.nodeflow.api.ui.dialog.button;
 
+import javafx.beans.property.BooleanProperty;
 import thito.nodeflow.api.locale.I18nItem;
 import thito.nodeflow.api.ui.Icon;
 
