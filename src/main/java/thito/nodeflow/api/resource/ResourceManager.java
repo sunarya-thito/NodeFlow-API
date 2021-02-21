@@ -24,7 +24,7 @@ public interface ResourceManager {
 
     Resource getResource(String name);
 
-    ResourceFile getExternalResource(String name);
+    Resource getExternalResource(String name);
 
     ResourceDirectory getBaseDirectory();
 

@@ -10,6 +10,7 @@
     <properties>
         <compileOutput>C:/Project Build/NodeFlow</compileOutput>
     </properties>
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -34,7 +35,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <outputDirectory>${compileOutput}/bin</outputDirectory>
+                    <outputDirectory>../../Project Build/NodeFlow/bin</outputDirectory>
                     <finalName>${project.build.finalName}</finalName>
                 </configuration>
             </plugin>

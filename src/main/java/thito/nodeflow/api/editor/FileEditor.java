@@ -10,5 +10,4 @@ public interface FileEditor {
     void createFile(ResourceFile file);
 
     FileEditorSession createSession(ResourceFile file);
-
 }

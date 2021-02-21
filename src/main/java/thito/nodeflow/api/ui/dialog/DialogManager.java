@@ -1,5 +1,6 @@
 package thito.nodeflow.api.ui.dialog;
 
+import javafx.beans.value.*;
 import thito.nodeflow.api.locale.I18nItem;
 import thito.nodeflow.api.task.Task;
 import thito.nodeflow.api.ui.*;
@@ -38,6 +39,10 @@ public interface DialogManager {
     <T> FormContent.ChoiceForm<T> createChoiceForm(I18nItem question, List<T> choices, boolean optional);
 
     FormContent.StringListForm createStringListForm(I18nItem question, List<String> initialValues, boolean optional);
+
+    FormContent.Validator createRegexValidator(String regex, I18nItem message);
+
+    FormContent.Validator createPropertyValidator(ObservableValue<Boolean> value, I18nItem message);
 
     default FormContent.StringForm createStringForm(I18nItem question, String initialValue, boolean optional) {
         return createStringForm(question, initialValue, null, optional);

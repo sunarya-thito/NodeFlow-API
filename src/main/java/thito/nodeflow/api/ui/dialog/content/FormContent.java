@@ -1,6 +1,7 @@
 package thito.nodeflow.api.ui.dialog.content;
 
 import javafx.beans.property.*;
+import javafx.beans.value.*;
 import thito.nodeflow.api.*;
 import thito.nodeflow.api.locale.*;
 import thito.nodeflow.api.node.*;
@@ -32,6 +33,16 @@ public interface FormContent extends DialogContent {
         ObjectProperty<T> impl_answerProperty();
     }
 
+    interface Validator {
+        static Validator regex(String regex, I18nItem message) {
+            return NodeFlow.getApplication().getUIManager().getDialogManager().createRegexValidator(regex, message);
+        }
+        static Validator property(ObservableValue<Boolean> value, I18nItem message) {
+            return NodeFlow.getApplication().getUIManager().getDialogManager().createPropertyValidator(value, message);
+        }
+        Object impl_createPeer();
+    }
+
     interface ChoiceForm<T> extends Form<T> {
         List<T> getChoices();
         static <T> ChoiceForm<T> create(I18nItem question, List<T> choices, boolean optional) {
@@ -45,8 +56,9 @@ public interface FormContent extends DialogContent {
     interface StringForm extends Form<String> {
         boolean multiline();
         void setMultiline(boolean multiline);
-        void setValidator(String regex);
-        String getValidator();
+        void setRule(String regex);
+        String getRule();
+        void addValidator(Validator... validators);
         static StringForm create(I18nItem question, String initialAnswer, boolean optional) {
             return NodeFlow.getApplication().getUIManager().getDialogManager().createStringForm(question, initialAnswer, optional);
         }

@@ -22,4 +22,8 @@ public interface UndoManager {
     void storeAction(EditorAction action);
 
     void storeAction(ObservableValue<String> name, Runnable undo, Runnable redo);
+
+    ObservableValue<Boolean> impl_hasUndoProperty();
+
+    ObservableValue<Boolean> impl_hasRedoProperty();
 }
