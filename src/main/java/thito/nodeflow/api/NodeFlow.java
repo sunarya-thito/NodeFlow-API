@@ -2,9 +2,9 @@ package thito.nodeflow.api;
 
 import thito.nodeflow.api.bundle.BundleManager;
 import thito.nodeflow.api.editor.EditorManager;
+import thito.nodeflow.api.editor.node.*;
 import thito.nodeflow.api.event.EventManager;
 import thito.nodeflow.api.locale.LocaleManager;
-import thito.nodeflow.api.node.NodeManager;
 import thito.nodeflow.api.project.ProjectManager;
 import thito.nodeflow.api.resource.ResourceManager;
 import thito.nodeflow.api.settings.ApplicationSettings;
@@ -45,7 +45,7 @@ public abstract class NodeFlow {
 
     public abstract LocaleManager getLocaleManager();
 
-    public abstract NodeManager getNodeManager();
+    public abstract ModuleManager getModuleManager();
 
     public abstract ProjectManager getProjectManager();
 

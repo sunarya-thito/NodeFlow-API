@@ -1,5 +1,6 @@
 package thito.nodeflow.api.editor;
 
+import javafx.beans.binding.*;
 import javafx.beans.value.ObservableValue;
 
 public interface UndoManager {
@@ -23,7 +24,7 @@ public interface UndoManager {
 
     void storeAction(ObservableValue<String> name, Runnable undo, Runnable redo);
 
-    ObservableValue<Boolean> impl_hasUndoProperty();
+    BooleanBinding impl_hasUndoProperty();
 
-    ObservableValue<Boolean> impl_hasRedoProperty();
+    BooleanBinding impl_hasRedoProperty();
 }

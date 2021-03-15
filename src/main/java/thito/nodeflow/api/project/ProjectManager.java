@@ -23,7 +23,7 @@ public interface ProjectManager {
     default Project getProject(ProjectProperties properties) {
         Project[] projects = getLoadedProjects();
         for (int i = 0; i < projects.length; i++) {
-            if (projects[i].getProperties().equals(properties)) {
+            if (projects[i].getProperties().getDirectory().getPath().equals(properties.getDirectory().getPath())) {
                 return projects[i];
             }
         }

@@ -1,7 +1,7 @@
 package thito.nodeflow.api.editor;
 
-import javafx.beans.value.ObservableValue;
-import thito.nodeflow.api.NodeFlow;
+import javafx.beans.value.*;
+import thito.nodeflow.api.*;
 import thito.nodeflow.api.locale.*;
 
 public interface EditorAction {

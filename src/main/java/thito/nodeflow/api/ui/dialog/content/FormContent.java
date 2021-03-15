@@ -2,9 +2,9 @@ package thito.nodeflow.api.ui.dialog.content;
 
 import javafx.beans.property.*;
 import javafx.beans.value.*;
-import thito.nodeflow.api.*;
+import javafx.scene.Node;
 import thito.nodeflow.api.locale.*;
-import thito.nodeflow.api.node.*;
+import thito.nodeflow.api.*;
 import thito.nodeflow.api.ui.*;
 
 import java.util.*;
@@ -40,7 +40,8 @@ public interface FormContent extends DialogContent {
         static Validator property(ObservableValue<Boolean> value, I18nItem message) {
             return NodeFlow.getApplication().getUIManager().getDialogManager().createPropertyValidator(value, message);
         }
-        Object impl_createPeer();
+        boolean validate(Node node);
+        I18nItem getMessage();
     }
 
     interface ChoiceForm<T> extends Form<T> {
@@ -59,6 +60,7 @@ public interface FormContent extends DialogContent {
         void setRule(String regex);
         String getRule();
         void addValidator(Validator... validators);
+        List<Validator> getValidators();
         static StringForm create(I18nItem question, String initialAnswer, boolean optional) {
             return NodeFlow.getApplication().getUIManager().getDialogManager().createStringForm(question, initialAnswer, optional);
         }

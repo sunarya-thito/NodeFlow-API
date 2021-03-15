@@ -27,8 +27,8 @@ public interface Section {
 //            return this;
 //        }
 //    }.initializeDefault();
-    MapSection MAP_DEFAULT_VALUE = NodeFlow.getApplication().getToolkit().newDefaultMapSection();
-    ListSection LIST_DEFAULT_VALUE = NodeFlow.getApplication().getToolkit().newDefaultListSection();
+    MapSection MAP_DEFAULT_VALUE = NodeFlow.getApplication() == null ? null : NodeFlow.getApplication().getToolkit().newDefaultMapSection();
+    ListSection LIST_DEFAULT_VALUE = NodeFlow.getApplication() == null ? null : NodeFlow.getApplication().getToolkit().newDefaultListSection();
 
     static MapSection newMap() {
         return NodeFlow.getApplication().getToolkit().newMapSection();

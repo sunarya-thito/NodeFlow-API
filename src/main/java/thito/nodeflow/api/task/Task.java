@@ -1,7 +1,6 @@
 package thito.nodeflow.api.task;
 
 import thito.nodeflow.api.NodeFlow;
-import thito.nodeflow.api.ui.*;
 
 public interface Task {
     static Task createTask(String name, Runnable runnable, TaskThread thread) {
@@ -65,4 +64,16 @@ public interface Task {
     boolean isCancelled();
 
     void cancel();
+
+    default void execute() {
+        getThread().runTask(this);
+    }
+
+    default void executeRepeatedly(Duration delay, Duration period) {
+        getThread().runTaskRepeatedly(this, delay, period);
+    }
+
+    default void executeLater(Duration delay) {
+        getThread().runTaskLater(this, delay);
+    }
 }

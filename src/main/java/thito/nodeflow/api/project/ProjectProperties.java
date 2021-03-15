@@ -1,5 +1,6 @@
 package thito.nodeflow.api.project;
 
+import javafx.beans.property.*;
 import thito.nodeflow.api.resource.ResourceDirectory;
 
 public interface ProjectProperties {
@@ -20,4 +21,11 @@ public interface ProjectProperties {
     long getLastModified();
 
     void setLastModified(long lastModified);
+
+    void save();
+
+    StringProperty impl_nameProperty();
+
+    StringProperty impl_authorProperty();
+
 }

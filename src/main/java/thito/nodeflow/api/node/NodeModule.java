@@ -1,9 +1,8 @@
 package thito.nodeflow.api.node;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Set;
+import thito.nodeflow.api.editor.node.*;
+
+import java.util.*;
 
 public interface NodeModule {
     long getId();
@@ -12,15 +11,9 @@ public interface NodeModule {
 
     Set<Node> getNodes();
 
-    Set<NodeLink> getLinks();
+    Set<Link> getLinks();
 
     Set<NodeGroup> getGroups();
 
-    void save() throws IOException;
-
-    void reload() throws IOException, ClassNotFoundException;
-
-    void saveAs(OutputStream outputStream) throws IOException;
-
-    void loadFrom(InputStream inputStream) throws IOException, ClassNotFoundException;
+    ModuleEditorState getEditorState();
 }

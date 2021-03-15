@@ -4,8 +4,6 @@ import javafx.beans.property.ObjectProperty;
 import javafx.collections.*;
 import thito.nodeflow.api.locale.I18nItem;
 
-import java.util.List;
-
 public interface SettingsItem<T> {
     String name();
 

@@ -1,10 +1,13 @@
 package thito.nodeflow.api.locale;
 
+import javafx.beans.Observable;
+import javafx.beans.binding.*;
 import javafx.beans.property.*;
 import javafx.beans.value.*;
 import thito.nodeflow.api.NodeFlow;
 
-import java.util.Locale;
+import java.util.*;
+import java.util.stream.*;
 
 public interface I18n {
     static I18nItem $(String name) {
@@ -34,12 +37,17 @@ public interface I18n {
 
             @Override
             public String getString(Object... args) {
-                return String.format(value, args);
+                return String.format(value, Arrays.stream(args).map(x -> x instanceof ObservableValue ? ((ObservableValue<?>) x).getValue() : x).toArray());
             }
 
             @Override
             public ObservableValue<String> stringBinding(Object... args) {
-                return property;
+                Object[] arguments = Arrays.stream(args).map(x -> x instanceof ObservableValue ? ((ObservableValue<?>) x).getValue() : x).toArray();
+                ArrayList<javafx.beans.Observable> observables = new ArrayList<>(Arrays.stream(args).filter(javafx.beans.Observable.class::isInstance).map(javafx.beans.Observable.class::cast).collect(Collectors.toList()));
+                observables.add(property);
+                return Bindings.createStringBinding(() -> String.format(getRawString(), arguments),
+                        observables.toArray(new Observable[0])
+                );
             }
 
             @Override

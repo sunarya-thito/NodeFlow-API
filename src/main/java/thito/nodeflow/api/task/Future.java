@@ -2,6 +2,8 @@ package thito.nodeflow.api.task;
 
 import thito.nodeflow.api.NodeFlow;
 
+import java.util.function.*;
+
 public interface Future {
     static CompletableFuture createCompletableFuture() {
         return NodeFlow.getApplication().getTaskManager().createCompletableFuture();
@@ -23,5 +25,7 @@ public interface Future {
         throw new UnsupportedOperationException();
     }
 
-    void andThen(Runnable after);
+    Future andThen(Consumer<Throwable> acceptError);
+
+    Future andThen(Runnable after);
 }

@@ -17,9 +17,13 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.*;
 
 public interface Toolkit {
-    JavaType fromClass(Class<?> clazz);
+
+    static void log(Object msg) {
+        NodeFlow.getApplication().getLogger().log(Level.INFO, String.valueOf(msg));
+    }
 
     void saveYaml(Section section, Writer writer);
 
