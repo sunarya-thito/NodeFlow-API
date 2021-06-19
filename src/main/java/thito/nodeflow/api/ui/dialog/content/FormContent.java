@@ -3,6 +3,7 @@ package thito.nodeflow.api.ui.dialog.content;
 import javafx.beans.property.*;
 import javafx.beans.value.*;
 import javafx.scene.Node;
+import javafx.util.*;
 import thito.nodeflow.api.locale.*;
 import thito.nodeflow.api.*;
 import thito.nodeflow.api.ui.*;
@@ -31,6 +32,10 @@ public interface FormContent extends DialogContent {
         boolean answer(T answer);
         boolean optional();
         ObjectProperty<T> impl_answerProperty();
+        BooleanProperty impl_disableProperty();
+        static Form<List<String[]>> createStringTable(I18nItem question, I18nItem[] columns, List<String[]> values, boolean optional) {
+            return NodeFlow.getApplication().getUIManager().getDialogManager().createStringTableForm(question, columns, values, optional);
+        }
     }
 
     interface Validator {
@@ -46,6 +51,8 @@ public interface FormContent extends DialogContent {
 
     interface ChoiceForm<T> extends Form<T> {
         List<T> getChoices();
+        StringConverter<T> getStringConverter();
+        void setStringConverter(StringConverter<T> converter);
         static <T> ChoiceForm<T> create(I18nItem question, List<T> choices, boolean optional) {
             return NodeFlow.getApplication().getUIManager().getDialogManager().createChoiceForm(question, choices, optional);
         }

@@ -1,5 +1,6 @@
 package thito.nodeflow.api.ui.menu;
 
+import javafx.beans.property.*;
 import javafx.scene.control.Menu;
 import thito.nodeflow.api.NodeFlow;
 import thito.nodeflow.api.action.Action;
@@ -60,4 +61,5 @@ public interface MenuItem {
     void dispatch();
     Menu impl_createRoot();
     javafx.scene.control.MenuItem impl_createPeer();
+    BooleanProperty impl_disableProperty();
 }

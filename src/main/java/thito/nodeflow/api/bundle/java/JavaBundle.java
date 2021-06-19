@@ -1,6 +1,6 @@
 package thito.nodeflow.api.bundle.java;
 
-import thito.nodeflow.api.bundle.Bundle;
+import thito.nodeflow.api.bundle.*;
 import thito.nodeflow.api.editor.node.*;
 
 import java.util.Set;
@@ -10,7 +10,7 @@ public interface JavaBundle extends Bundle {
 
     Class<?> findClass(String name);
 
-    ClassLoader getClassLoader();
+    BundleClassLoader getClassLoader();
 
-    Set<NodeProviderCategory> getCategories();
+    boolean isShaded();
 }

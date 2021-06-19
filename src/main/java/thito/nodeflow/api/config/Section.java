@@ -7,10 +7,7 @@ import thito.nodeflow.api.resource.WritableResourceFile;
 
 import java.io.Reader;
 import java.io.Writer;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public interface Section {
     String STRING_DEFAULT_VALUE = "";
@@ -78,6 +75,7 @@ public interface Section {
 
     static Object wrapValue(Object value) {
         if (value == null) return null;
+        if (value instanceof MapSection || value instanceof ListSection) return value;
         if (value instanceof Map) {
             return NodeFlow.getApplication().getToolkit().newMapSection((Map<?, ?>) value);
         }
@@ -85,6 +83,21 @@ public interface Section {
             return NodeFlow.getApplication().getToolkit().newListSection((List<?>) value);
         }
         return value;
+    }
+
+    default Set<String> collectMapKeys(boolean deep) {
+        Set<String> mapKeys = new HashSet<>();
+        if (isMap()) {
+            for (Map.Entry<String, Object> entry : asMap().entrySet()) {
+                mapKeys.add(entry.getKey());
+                if (entry.getValue() instanceof MapSection && deep) {
+                    for (String key : ((MapSection) entry.getValue()).collectMapKeys(true)) {
+                        mapKeys.add(entry.getKey()+"."+key);
+                    }
+                }
+            }
+        }
+        return mapKeys;
     }
 
     default MapSection asMap() {

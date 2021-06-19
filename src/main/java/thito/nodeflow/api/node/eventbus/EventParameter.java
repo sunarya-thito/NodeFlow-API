@@ -1,4 +1,4 @@
-package thito.nodeflow.api.component.eventbus;
+package thito.nodeflow.api.node.eventbus;
 
 public interface EventParameter {
     static EventParameter create(String name, Class<?> type) {

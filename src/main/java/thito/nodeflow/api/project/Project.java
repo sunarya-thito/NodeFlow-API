@@ -1,7 +1,11 @@
 package thito.nodeflow.api.project;
 
+import thito.nodeflow.api.config.*;
 import thito.nodeflow.api.resource.*;
+import thito.nodeflow.api.task.*;
 import thito.nodeflow.api.ui.*;
+
+import java.util.*;
 
 public interface Project {
     EditorWindow getEditorWindow();
@@ -21,6 +25,12 @@ public interface Project {
         }
         return ((UnknownResource) resource).createDirectory();
     }
+
+    List<ProjectDebugger> getActiveDebugger();
+
+    FutureSupplier<ProjectDebugger> runDebug();
+
+    Section getFacetConfiguration(ProjectFacet facet);
 
     ProjectFacet getFacet();
 }

@@ -1,17 +1,21 @@
 package thito.nodeflow.api.editor;
 
+import thito.nodeflow.api.node.*;
+
 import java.util.*;
 
 public interface EditorManager {
-    FileEditor getRegisteredHandler(String fileExtension);
+    void registerCompleter(MethodParameterCompleter completer);
 
-    Collection<FileEditor> getEditors();
+    void unregisterCompleter(MethodParameterCompleter completer);
 
-    void registerHandler(FileEditor editor);
+    FileHandler getRegisteredHandler(String fileExtension);
 
-    void unregisterHandler(FileEditor editor);
+    Collection<FileHandler> getEditors();
+
+    void registerHandler(FileHandler editor);
+
+    void unregisterHandler(FileHandler editor);
 
     boolean canHandle(String fileExtension);
-
-    UndoManager getUndoManager();
 }

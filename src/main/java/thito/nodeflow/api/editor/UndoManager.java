@@ -1,7 +1,9 @@
 package thito.nodeflow.api.editor;
 
 import javafx.beans.binding.*;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.value.*;
+
+import java.util.function.*;
 
 public interface UndoManager {
     int getBuffer();
@@ -27,4 +29,8 @@ public interface UndoManager {
     BooleanBinding impl_hasUndoProperty();
 
     BooleanBinding impl_hasRedoProperty();
+
+    ObservableValue<EditorAction> impl_nextUndoBinding();
+
+    ObservableValue<EditorAction> impl_nextRedoBinding();
 }

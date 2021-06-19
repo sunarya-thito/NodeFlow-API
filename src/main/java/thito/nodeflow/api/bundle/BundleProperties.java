@@ -13,6 +13,10 @@ public interface BundleProperties {
 
     String getVersion();
 
+    String getJavaDoc();
+
+    int getJavaDocVersion();
+
     ResourceDirectory getDirectory();
 
     Bundle loadBundle();

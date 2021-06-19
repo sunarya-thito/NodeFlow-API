@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 public interface TaskManager {
     String BACKGROUND_THREAD = "background_thread";
     String FOREGROUND_THREAD = "foreground_thread";
+    String DEBUGGER_THREAD = "debugger_thread";
 
     GroupTask groupTask(String name, List<? extends Task> tasks);
 
@@ -17,7 +18,7 @@ public interface TaskManager {
 
     TaskThread getThread(String name);
 
-    <T> FutureSupplier<T> createFutureSupplier(Duration cacheTime, TaskThread thread, Supplier<T> supplier);
+    <T> FutureSupplier<T> createFutureSupplier(TaskThread thread, Supplier<T> supplier);
 
     <T> CompletableFutureSupplier createCompletableFutureSupplier();
 

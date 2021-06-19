@@ -1,14 +1,17 @@
 package thito.nodeflow.api.project;
 
-import javafx.beans.binding.*;
-import javafx.scene.Node;
-import thito.nodeflow.api.editor.FileEditorSession;
+import javafx.beans.value.*;
+import javafx.collections.*;
+import javafx.scene.*;
+import thito.nodeflow.api.project.property.*;
 import thito.nodeflow.api.resource.*;
 
-public interface ProjectTab {
-    ResourceFile getFile();
+import java.util.*;
 
-    FileEditorSession getSession();
+public interface ProjectTab {
+    ObservableList<ComponentProperty<?>> getTabProperties();
+
+    ResourceFile getFile();
 
     void reloadFile();
 
@@ -18,9 +21,11 @@ public interface ProjectTab {
 
     String getTitle();
 
-    StringBinding impl_titleProperty();
+    ObservableValue<String> impl_titleProperty();
 
     Node impl_getPeer();
 
     void focus();
+
+    Set<Class<? extends Throwable>> impl_ignoredErrors();
 }

@@ -10,7 +10,7 @@ public interface ApplicationSettings {
     AUTOSAVE_INTERVAL = "autosave-interval",
     WORKSPACE_DIRECTORY = "workspace-directory",
     BUNDLES_DIRECTORY = "bundles-directory",
-    SHOW_INTRO = "show-intro",
+//    SHOW_INTRO = "show-intro",
     LANGUAGE = "language",
     THEME = "theme"
     ;

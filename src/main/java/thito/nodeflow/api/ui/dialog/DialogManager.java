@@ -38,11 +38,17 @@ public interface DialogManager {
 
     <T> FormContent.ChoiceForm<T> createChoiceForm(I18nItem question, List<T> choices, boolean optional);
 
+    <T> FormContent.Form<List<String[]>> createStringTableForm(I18nItem question, I18nItem[] columns, List<String[]> values, boolean optional);
+
     FormContent.StringListForm createStringListForm(I18nItem question, List<String> initialValues, boolean optional);
 
     FormContent.Validator createRegexValidator(String regex, I18nItem message);
 
     FormContent.Validator createPropertyValidator(ObservableValue<Boolean> value, I18nItem message);
+
+    void createQuestionDialog(Window window, I18nItem title, I18nItem question, thito.nodeflow.api.ui.dialog.Dialog.Type type, thito.nodeflow.api.ui.dialog.Dialog.Level level, Consumer<Boolean> result);
+
+    void createInfoDialog(Window window, I18nItem title, I18nItem question, thito.nodeflow.api.ui.dialog.Dialog.Type type, thito.nodeflow.api.ui.dialog.Dialog.Level level, Runnable result);
 
     default FormContent.StringForm createStringForm(I18nItem question, String initialValue, boolean optional) {
         return createStringForm(question, initialValue, null, optional);

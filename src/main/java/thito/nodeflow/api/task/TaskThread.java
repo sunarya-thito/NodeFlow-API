@@ -5,6 +5,7 @@ import thito.nodeflow.api.NodeFlow;
 import java.util.List;
 
 public interface TaskThread {
+    TaskThread DEBUGGER = NodeFlow.getApplication().getTaskManager().getThread(TaskManager.DEBUGGER_THREAD);
     TaskThread BACKGROUND = NodeFlow.getApplication().getTaskManager().getBackgroundThread();
     TaskThread FOREGROUND = NodeFlow.getApplication().getTaskManager().getForegroundThread();
 

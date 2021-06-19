@@ -9,4 +9,13 @@ public interface NodeProviderCategory {
     String getAlias();
     List<NodeProvider> getProviders();
     Icon getIcon();
+    default NodeProvider findProvider(String id) {
+        for (int i = 0; i < getProviders().size(); i++) {
+            NodeProvider provider = getProviders().get(i);
+            if (provider.getID().equals(id)) {
+                return provider;
+            }
+        }
+        return null;
+    }
 }

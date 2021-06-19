@@ -1,6 +1,8 @@
 package thito.nodeflow.api.node;
 
+import thito.nodeflow.api.editor.*;
 import thito.nodeflow.api.editor.node.*;
+import thito.nodeflow.api.resource.*;
 
 import java.util.*;
 
@@ -16,4 +18,6 @@ public interface NodeModule {
     Set<NodeGroup> getGroups();
 
     ModuleEditorState getEditorState();
+
+    ResourceFile getFile();
 }

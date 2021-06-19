@@ -4,7 +4,7 @@ import javafx.scene.*;
 import thito.nodeflow.api.editor.*;
 
 public interface Toolbar {
-    FileEditorSession getEditorSession();
+    FileSession getEditorSession();
     ToolComponent[] getComponents();
     Node impl_getPeer();
 }

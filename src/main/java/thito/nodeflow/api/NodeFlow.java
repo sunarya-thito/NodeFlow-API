@@ -1,17 +1,19 @@
 package thito.nodeflow.api;
 
-import thito.nodeflow.api.bundle.BundleManager;
-import thito.nodeflow.api.editor.EditorManager;
+import thito.nodeflow.api.bundle.*;
+import thito.nodeflow.api.config.*;
+import thito.nodeflow.api.editor.*;
 import thito.nodeflow.api.editor.node.*;
-import thito.nodeflow.api.event.EventManager;
-import thito.nodeflow.api.locale.LocaleManager;
-import thito.nodeflow.api.project.ProjectManager;
-import thito.nodeflow.api.resource.ResourceManager;
-import thito.nodeflow.api.settings.ApplicationSettings;
-import thito.nodeflow.api.task.TaskManager;
-import thito.nodeflow.api.ui.UIManager;
+import thito.nodeflow.api.event.*;
+import thito.nodeflow.api.locale.*;
+import thito.nodeflow.api.node.eventbus.command.*;
+import thito.nodeflow.api.project.*;
+import thito.nodeflow.api.resource.*;
+import thito.nodeflow.api.settings.*;
+import thito.nodeflow.api.task.*;
+import thito.nodeflow.api.ui.*;
 
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 public abstract class NodeFlow {
     private static NodeFlow instance;
@@ -28,6 +30,8 @@ public abstract class NodeFlow {
     public static Logger getMainLogger() {
         return getApplication().getLogger();
     }
+
+    public abstract CommandManager getCommandManager();
 
     public abstract Logger getLogger();
 
@@ -56,6 +60,8 @@ public abstract class NodeFlow {
     public abstract EditorManager getEditorManager();
 
     public abstract Toolkit getToolkit();
+
+    public abstract Section getConfiguration(ProjectFacet facet);
 
     public abstract void shutdown();
 }

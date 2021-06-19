@@ -1,4 +1,4 @@
-package thito.nodeflow.api.component.state;
+package thito.nodeflow.api.node.state;
 
 import thito.nodeflow.api.config.*;
 

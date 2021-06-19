@@ -6,4 +6,6 @@ public interface CompletableFuture extends Future {
     void error(Throwable t);
 
     void reset();
+
+    boolean isComplete();
 }
