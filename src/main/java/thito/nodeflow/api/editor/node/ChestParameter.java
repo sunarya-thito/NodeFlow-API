@@ -1,6 +1,6 @@
 package thito.nodeflow.api.editor.node;
 
-public interface ChestNode {
+public interface ChestParameter extends NodeParameter {
     ChestSlot[] getSlots();
     void setRows(int rows);
     int getRows();

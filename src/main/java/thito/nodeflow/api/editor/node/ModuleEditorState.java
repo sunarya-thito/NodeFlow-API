@@ -11,4 +11,12 @@ public interface ModuleEditorState {
     void setPivotY(double pivotY);
     double getZoom();
     void setZoom(double zoom);
+    String getNodeLinkStyle();
+    void setNodeLinkStyle(String style);
+    boolean isSnapToGrid();
+    void setSnapToGrid(boolean snapToGrid);
+    String getMode();
+    void setMode(String mode);
+    boolean isPlayAnimation();
+    void setPlayAnimation(boolean animation);
 }
